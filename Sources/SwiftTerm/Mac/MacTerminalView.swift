@@ -1002,7 +1002,7 @@ open class TerminalView: NSView, NSTextInputClient, NSUserInterfaceValidations, 
     // We monitor the flags changed to enable URL previews on mouse-hover like iTerm
     // when the Command key is pressed.
     
-    public override func flagsChanged(with event: NSEvent) {
+    open override func flagsChanged(with event: NSEvent) {
         if event.modifierFlags.contains(.command){
             commandActive = true
             startTracking()
@@ -1086,7 +1086,7 @@ open class TerminalView: NSView, NSTextInputClient, NSUserInterfaceValidations, 
     // doCommand/noop: - but more research needs to take place to figure out the priority
     // of those keys.
     //
-    public override func keyDown(with event: NSEvent) {
+    open override func keyDown(with event: NSEvent) {
         selection.active = false
         let eventFlags = event.modifierFlags
 
@@ -1238,7 +1238,7 @@ open class TerminalView: NSView, NSTextInputClient, NSUserInterfaceValidations, 
         super.keyUp(with: event)
     }
     
-    public override func doCommand(by selector: Selector) {
+    open override func doCommand(by selector: Selector) {
         if !terminal.keyboardEnhancementFlags.isEmpty {
             let mods: KittyKeyboardModifiers
             if let pending = pendingKittyKeyEvent {
